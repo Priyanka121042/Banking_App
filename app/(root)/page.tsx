@@ -1,10 +1,11 @@
 import RightSidebar from '@/components/RightSidebar'
 import HeaderBox from '@/components/ui/HeaderBox'
 import TotalBalanceBox from '@/components/ui/TotalBalanceBox'
+import { getLoggedInUser } from '@/lib/actions/users.actions'
 import React from 'react'
 
-const Home = () => {
-    const loggedIn= {firstName: 'Priyanka', lastName: 'Ranjan', email: 'contact@user.pro'}
+const Home = async () => {
+    const loggedIn= await getLoggedInUser()
   return (
     <section className='home'> 
     <div className='home-content'>
@@ -12,7 +13,7 @@ const Home = () => {
          <HeaderBox
          type="greeting"
          title="Welcome"
-         user={loggedIn?.firstName || 'Guest'}
+         user={loggedIn?.name || 'Guest'}
          subtext="Access and manage your account and transactions"
           />
 
@@ -36,3 +37,7 @@ const Home = () => {
 }
 
 export default Home
+
+function asnyc() {
+  throw new Error('Function not implemented.')
+}
